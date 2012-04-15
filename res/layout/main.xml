@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res/de.renard.views.ledlight"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#000000"
@@ -12,29 +13,29 @@
         android:layout_weight="1"
         android:text="Button" />
 
-
-    <de.renard.views.ledlight.LedLightView
+    <de.renard.views.ledlight.LEDLightView
         android:id="@+id/light1"
+        app:LightColor="#ff0000"     
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <de.renard.views.ledlight.LedLightView
+    <de.renard.views.ledlight.LEDLightView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <de.renard.views.ledlight.LedLightView
+    <de.renard.views.ledlight.LEDLightView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <de.renard.views.ledlight.LedLightView
+    <de.renard.views.ledlight.LEDLightView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <de.renard.views.ledlight.LedLightView
+    <de.renard.views.ledlight.LEDLightView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />

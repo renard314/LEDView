@@ -12,7 +12,7 @@ public class LedLightActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-        final LedLightView led1 = (LedLightView) findViewById(R.id.light1);
+        final LEDLightView led1 = (LEDLightView) findViewById(R.id.light1);
         Button b =(Button) findViewById(R.id.button1);
         b.setOnClickListener(new OnClickListener() {
 			

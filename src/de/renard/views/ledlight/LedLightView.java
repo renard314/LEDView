@@ -1,6 +1,7 @@
 package de.renard.views.ledlight;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -21,7 +22,7 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.ObjectAnimator;
 
-public class LedLightView extends View implements Checkable {
+public class LEDLightView extends View implements Checkable {
 	private RectF mBounds = new RectF();
 	private RectF mInnerBounds = new RectF();
 	private RectF mGlowBounds = new RectF();
@@ -39,13 +40,21 @@ public class LedLightView extends View implements Checkable {
 	final float[] hsv = new float[3];
 	float mLightIntensity = 0;
 	private boolean mOn = false;
-	int mLightColor = Color.GREEN;
+	int mLightColor;
 	private boolean mRecalculateGlowShader;
 	private Bitmap mDrawingCache = null;
 
-	public LedLightView(Context context, AttributeSet attrs) {
-		super(context, attrs);
+	private void init(AttributeSet attrs) {
 
+		TypedArray a = getContext().obtainStyledAttributes(attrs, R.styleable.LEDLightView);
+		final int color = a.getColor(R.styleable.LEDLightView_LightColor, Color.GREEN);
+		setLightColor(color);
+		a.recycle();
+	}
+
+	public LEDLightView(Context context, AttributeSet attrs) {
+		super(context, attrs);
+		init(attrs);
 		mRimPaint = new Paint();
 		mRimPaint.setFlags(Paint.ANTI_ALIAS_FLAG);
 
@@ -76,7 +85,7 @@ public class LedLightView extends View implements Checkable {
 
 	private void initGlowColors() {
 		final int i1 = (int) Math.min(255, 0 * mLightIntensity);
-		final int i2 = (int) Math.min(255, 55 * mLightIntensity);
+		final int i2 = (int) Math.min(255, 155 * mLightIntensity);
 		final int i3 = (int) Math.min(255, 255 * mLightIntensity);
 		Color.colorToHSV(mLightColor, hsv);
 		hsv[2] = mLightIntensity;
@@ -86,17 +95,17 @@ public class LedLightView extends View implements Checkable {
 		final int b = Color.blue(color);
 		glowGradientColors[2] = Color.argb(i1, r, g, b);
 		glowGradientColors[1] = Color.argb(i2, r, g, b);
-		hsv[1] = 1 - 0.4f * mLightIntensity;
+		// hsv[1] = 1 - 0.4f * mLightIntensity;
 		glowGradientColors[0] = Color.HSVToColor(i3, hsv);
 		glowGradientPositions[2] = 0.90f;
-		glowGradientPositions[1] = 0.80f;
+		glowGradientPositions[1] = 0.70f;
 		glowGradientPositions[0] = 0.25f;
 		mRecalculateGlowShader = true;
 	}
 
 	private void initGlassColors() {
 		Color.colorToHSV(mLightColor, hsv);
-		hsv[2] = 0.67f;
+		hsv[2] = 0.27f;
 		final int color = Color.HSVToColor(hsv);
 		int r = Color.red(color);
 		int b = Color.blue(color);
@@ -143,7 +152,7 @@ public class LedLightView extends View implements Checkable {
 			RadialGradient glassShader = new RadialGradient(mBounds.centerX(), mBounds.centerY(), (int) mBounds.height(), glassGradientColors, glassGradientPositions, TileMode.CLAMP);
 			mGlassPaint.setShader(glassShader);
 			mGlassPaint.setXfermode(new PorterDuffXfermode(Mode.ADD));
-			
+
 			createDrawingCache(width, height);
 
 		}
@@ -151,6 +160,7 @@ public class LedLightView extends View implements Checkable {
 
 	/**
 	 * create a bitmap containing the background of the LED
+	 * 
 	 * @param width
 	 * @param height
 	 */
