@@ -56,7 +56,7 @@ public class LEDLightView extends View implements Checkable {
 
 	// values from configuration
 	int mLightColor;
-	int mAnimationDuration;
+	int mAnimationDuration; // duration of animation between on and off
 	boolean mColorizeGlass; // if true the glass gets colored depending on the
 							// light color
 
@@ -78,19 +78,12 @@ public class LEDLightView extends View implements Checkable {
 
 		mRimShadowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-		mGlowPaint = new Paint(Paint.ANTI_ALIAS_FLAG) {
-			{
-				setStyle(Paint.Style.FILL);
+		mGlowPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		mGlowPaint.setStyle(Paint.Style.FILL);
 
-			}
-		};
+		mGlassPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		mGlassPaint.setAntiAlias(true);
 
-		mGlassPaint = new Paint(Paint.ANTI_ALIAS_FLAG) {
-			{
-				setAntiAlias(true);
-
-			}
-		};
 		init(attrs);
 		setLightIntensity(mLightIntensity);
 	}
@@ -126,6 +119,7 @@ public class LEDLightView extends View implements Checkable {
 		hsv[1] -= hsv[1] * 0.45f * mLightIntensity; // make the center of the
 													// light a litte bit white
 		glowGradientColors[0] = Color.HSVToColor(i3, hsv);
+		
 		glowGradientPositions[2] = 0.90f;
 		glowGradientPositions[1] = 0.70f;
 		glowGradientPositions[0] = 0.33f;
@@ -172,7 +166,7 @@ public class LEDLightView extends View implements Checkable {
 
 			final float insetSize = size - 2 * inset;
 			// outer ring is a lighter metall
-			mBackgroundPaint.setShader(new LinearGradient(0.40f * insetSize + mBounds.left, 0.0f + mBounds.top, 0.60f * insetSize + mBounds.left, mBounds.bottom, Color.rgb(0x40, 0x45, 0x40), Color.rgb(0x10, 0x12, 0x10), Shader.TileMode.CLAMP));
+			mBackgroundPaint.setShader(new LinearGradient(0.40f * insetSize + mBounds.left, 0.0f + mBounds.top, 0.60f * insetSize + mBounds.left, mBounds.bottom, Color.rgb(0x30, 0x35, 0x30), Color.rgb(0x10, 0x12, 0x10), Shader.TileMode.CLAMP));
 			// area under glass is darker
 			mRimPaint.setShader(new LinearGradient(0.40f * insetSize + mBounds.left, 0.0f + mBounds.top, 0.60f * insetSize + mBounds.left, mBounds.bottom, Color.rgb(0xa0, 0xa5, 0xa0), Color.rgb(0x30, 0x32, 0x30), Shader.TileMode.CLAMP));
 
@@ -234,11 +228,7 @@ public class LEDLightView extends View implements Checkable {
 
 	@Override
 	protected void onDraw(Canvas canvas) {
-		// eclipse cant handle this view
-		// if (isInEditMode()) {
-		// canvas.drawOval(mBounds, mRimPaint);
-		// return;
-		// }
+
 		if (mBackground == null) {
 			return;
 		}
