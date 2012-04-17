@@ -1,5 +1,12 @@
+
+LED LIGHT
+=========
+
+## Custom Android view which looks like a led light. 
+
 needs nineoldandroids as library 
 http://nineoldandroids.com/
 
-![Screenshot 1](screenshot1.png "screenshot 1")
-![Screenshot 2](screenshot2.png "screenshot 2")
+[![Screenshot 1](https://github.com/renard314/LEDView/blob/master/screenshot1.png)](#example 1)\
+[![Screenshot 2](https://github.com/renard314/LEDView/blob/master/screenshot2.png)](#example 2)\
+
