@@ -120,7 +120,7 @@ public class LEDLightView extends View implements Checkable {
 													// light a litte bit white
 		glowGradientColors[0] = Color.HSVToColor(i3, hsv);
 		
-		glowGradientPositions[2] = 0.90f;
+		glowGradientPositions[2] = 1f;
 		glowGradientPositions[1] = 0.70f;
 		glowGradientPositions[0] = 0.33f;
 		// next onDraw() will create a new glow shader
@@ -154,7 +154,7 @@ public class LEDLightView extends View implements Checkable {
 			final float o = 0.02f * size;
 
 			mBounds.set(l, t, l + size, t + size);
-			float inset = size * 0.15f; // led is 15% smaller than the bounds so
+			float inset = size * 0.10f; // led is 15% smaller than the bounds so
 										// that the glow of the light can be
 										// larger than the led
 			mBounds.inset(inset, inset);
