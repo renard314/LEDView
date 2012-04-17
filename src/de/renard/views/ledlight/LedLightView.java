@@ -28,6 +28,11 @@ import com.nineoldandroids.animation.Animator;
 import com.nineoldandroids.animation.Animator.AnimatorListener;
 import com.nineoldandroids.animation.ObjectAnimator;
 
+/**
+ * 
+ * @author renard
+ *
+ */
 public class LEDLightView extends View implements Checkable {
 
 	final static int DEFAULT_ANIMATION_DURATION = 150;
@@ -133,9 +138,9 @@ public class LEDLightView extends View implements Checkable {
 	private void initGlassColors() {
 		if (!isInEditMode()) {
 			Color.colorToHSV(mLightColor, hsv);
-			hsv[1] = hsv[1] * 0.33f; // desaturate
-			hsv[2] = hsv[2] * 0.33f; // darken
-			mGlassPaint.setColorFilter(new LightingColorFilter(mLightColor, Color.HSVToColor(hsv)));
+			hsv[1] = hsv[1] * 0.6f; // desaturate
+			hsv[2] = hsv[2] * 0.3f; // darken
+			mGlassPaint.setColorFilter(new LightingColorFilter(Color.HSVToColor(hsv), Color.HSVToColor(hsv)));
 		}
 	}
 
@@ -154,9 +159,8 @@ public class LEDLightView extends View implements Checkable {
 			final float o = 0.02f * size;
 
 			mBounds.set(l, t, l + size, t + size);
-			float inset = size * 0.10f; // led is 15% smaller than the bounds so
-										// that the glow of the light can be
-										// larger than the led
+			float inset = size * 0.10f; // led is smaller than the bounds so
+										// that the glow of the light illuminates the metallic border
 			mBounds.inset(inset, inset);
 			mInnerBounds.set(mBounds.left + o, mBounds.top + o, mBounds.right - o, mBounds.bottom - o);
 			mGlassBounds.set(0, 0, mInnerBounds.width(), mInnerBounds.height());
