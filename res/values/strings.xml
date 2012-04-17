@@ -3,5 +3,6 @@
 
     <string name="hello">Hello World, LedLightActivity!</string>
     <string name="app_name">LedLight</string>
+    <string name="switch_light">switch light</string>
 
 </resources>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="LEDLightView">
+        <attr name="LightColor" format="color"/>
+        <attr name="ColorizeGlass" format="boolean"/>
+        <attr name="AnimationDuration" format="integer"/>
+        </declare-styleable>
+
+</resources>

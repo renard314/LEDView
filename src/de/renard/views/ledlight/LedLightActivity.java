@@ -13,12 +13,21 @@ public class LedLightActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
         final LEDLightView led1 = (LEDLightView) findViewById(R.id.light1);
+        final LEDLightView led2 = (LEDLightView) findViewById(R.id.light2);
+        final LEDLightView led3 = (LEDLightView) findViewById(R.id.light3);
+        final LEDLightView led4 = (LEDLightView) findViewById(R.id.light4);
+		led2.toggle();
+		led4.toggle();
+
         Button b =(Button) findViewById(R.id.button1);
         b.setOnClickListener(new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
 				led1.toggle();
+				led2.toggle();
+				led3.toggle();
+				led4.toggle();
 			}
 		});
     }
