@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res/de.renard.views.ledlight"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#000000"
@@ -15,16 +15,26 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:orientation="horizontal"
         android:layout_weight="2" >
 
         <de.renard.views.ledlight.LEDLightView
             android:id="@+id/light1"
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:AnimationDuration="300"
-            app:ColorizeGlass="false"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            app:AnimationDuration="500"
+            app:ColorizeGlass="true"
             app:LightColor="#ff0000" />
-    </LinearLayout>
+        <de.renard.views.ledlight.LEDLightView
+            android:id="@+id/light7"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            app:AnimationDuration="500"
+            app:ColorizeGlass="false"
+            app:LightColor="#ffff00" />
+        </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -40,7 +50,24 @@
             app:AnimationDuration="600"
             app:ColorizeGlass="true"
             app:LightColor="#00ff00" />
+                <de.renard.views.ledlight.LEDLightView
+            android:id="@+id/light6"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:AnimationDuration="600"
+            app:ColorizeGlass="false"
+            app:LightColor="#a330df" />
+        
 
+        <de.renard.views.ledlight.LEDLightView
+            android:id="@+id/light5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            app:AnimationDuration="600"
+            app:ColorizeGlass="true"
+            app:LightColor="#00fff0" />
         <de.renard.views.ledlight.LEDLightView
             android:id="@+id/light3"
             android:layout_width="0dp"
@@ -60,7 +87,7 @@
             android:id="@+id/light4"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:AnimationDuration="1300"
+            app:AnimationDuration="1000"
             app:ColorizeGlass="true"
             app:LightColor="#f0f00f" />
     </LinearLayout>
