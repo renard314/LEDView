@@ -12,13 +12,13 @@ public class LedLightActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.main);
-		final LEDLightView led1 = (LEDLightView) findViewById(R.id.light1);
-		final LEDLightView led2 = (LEDLightView) findViewById(R.id.light2);
-		final LEDLightView led3 = (LEDLightView) findViewById(R.id.light3);
-		final LEDLightView led4 = (LEDLightView) findViewById(R.id.light4);
-		final LEDLightView led5 = (LEDLightView) findViewById(R.id.light5);
-		final LEDLightView led6 = (LEDLightView) findViewById(R.id.light6);
-		final LEDLightView led7 = (LEDLightView) findViewById(R.id.light7);
+		final LedLightView led1 = (LedLightView) findViewById(R.id.light1);
+		final LedLightView led2 = (LedLightView) findViewById(R.id.light2);
+		final LedLightView led3 = (LedLightView) findViewById(R.id.light3);
+		final LedLightView led4 = (LedLightView) findViewById(R.id.light4);
+		final LedLightView led5 = (LedLightView) findViewById(R.id.light5);
+		final LedLightView led6 = (LedLightView) findViewById(R.id.light6);
+		final LedLightView led7 = (LedLightView) findViewById(R.id.light7);
 		led2.toggle();
 		led4.toggle();
 		led6.toggle();

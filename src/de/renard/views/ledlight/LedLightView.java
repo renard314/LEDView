@@ -34,7 +34,7 @@ import com.nineoldandroids.animation.ObjectAnimator;
 /**
  * @author renard
  */
-public class LEDLightView extends View implements Checkable {
+public class LedLightView extends View implements Checkable {
     
     final static int       DEFAULT_ANIMATION_DURATION = 250;
     final static int       DEFAULT_COLOR              = Color.RED;
@@ -72,7 +72,7 @@ public class LEDLightView extends View implements Checkable {
     private Bitmap         mBackground                = null;
     private Bitmap         mGlass                     = null;
     
-    public LEDLightView(Context context, AttributeSet attrs) {
+    public LedLightView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mRimPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         mBackgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
