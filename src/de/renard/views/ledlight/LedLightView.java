@@ -56,8 +56,8 @@ public class LedLightView extends View implements Checkable {
     private ObjectAnimator mAnimator;                                // animates between on and off state
                                                                       
     // pre allocated arrays
-    final int[]            glowGradientColors         = new int[3];
-    final float[]          glowGradientPositions      = new float[3];
+    final int[]            glowGradientColors         = new int[4];
+    final float[]          glowGradientPositions      = new float[4];
     final float[]          hsv                        = new float[3];
     // values from configuration
     int                    mLightColor;
@@ -146,15 +146,17 @@ public class LedLightView extends View implements Checkable {
         final int r = Color.red(color);
         final int g = Color.green(color);
         final int b = Color.blue(color);
-        glowGradientColors[2] = Color.argb(i1, r, g, b);
-        glowGradientColors[1] = Color.argb(i2, r, g, b);
+        glowGradientColors[3] = Color.argb(i1, r, g, b);
+        glowGradientColors[2] = Color.argb(i2, r, g, b);
         hsv[1] -= hsv[1] * 0.45f * mLightIntensity; // make the center of the
                                                     // light a litte bit white
+        glowGradientColors[1] = Color.HSVToColor(i3, hsv);
         glowGradientColors[0] = Color.HSVToColor(i3, hsv);
         
-        glowGradientPositions[2] = 1f;
-        glowGradientPositions[1] = 0.70f;
-        glowGradientPositions[0] = 0.33f;
+        glowGradientPositions[3] = 1f;
+        glowGradientPositions[2] = 0.70f;
+        glowGradientPositions[1] = 0.33f;
+        glowGradientPositions[0] = 0.0f;
         // next onDraw() will create a new glow shader
         mRecalculateGlowShader = true;
     }
@@ -243,7 +245,9 @@ public class LedLightView extends View implements Checkable {
         Bitmap largBitmap = BitmapFactory.decodeStream(is, null, opts);
         Bitmap glass = Bitmap.createScaledBitmap(largBitmap, (int) innerBounds.width(), (int) innerBounds.height(), true);
         mGlass = Bitmap.createBitmap((int) innerBounds.width(), (int) innerBounds.height(), Bitmap.Config.ARGB_8888);
-        largBitmap.recycle();
+        if (!isInEditMode()){
+            largBitmap.recycle();
+        }
         final int[] location = new int[2];
         getLocationOnScreen(location);
         // rotate the glass slightly
@@ -254,7 +258,9 @@ public class LedLightView extends View implements Checkable {
         Canvas canvas = new Canvas(mGlass);
         canvas.rotate((float) angle, mBounds.width() / 2, mBounds.height() / 2);
         canvas.drawBitmap(glass, 0, 0, null);
-        glass.recycle();
+        if (!isInEditMode()){
+            glass.recycle();
+        }
         BitmapShader shader = new BitmapShader(mGlass, TileMode.CLAMP, TileMode.CLAMP);
         mGlassPaint.setShader(shader);
     }
@@ -267,7 +273,9 @@ public class LedLightView extends View implements Checkable {
      */
     private void createDrawingCache(final int width, final int height) {
         if (mBackground != null) {
-            mBackground.recycle();
+            if (!isInEditMode()){
+                mBackground.recycle();
+            }
         }
         
         mBackground = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
