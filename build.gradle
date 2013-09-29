@@ -9,7 +9,10 @@ buildscript {
 apply plugin: 'android-library'
 
 dependencies {
-    compile fileTree(dir: 'libs', include: '*.jar')
+    repositories {
+        mavenCentral()
+    }
+    compile 'com.nineoldandroids:library:2.4.0+'
 }
 
 android {

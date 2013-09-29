@@ -1,0 +1,12 @@
+int attr AnimationDuration 0x7f010002
+int attr ColorizeGlass 0x7f010001
+int attr LightColor 0x7f010000
+int drawable glass_clear 0x7f020000
+int drawable glass_milky 0x7f020001
+int string app_name 0x7f030000
+int string hello 0x7f030001
+int string switch_light 0x7f030002
+int[] styleable LEDLightView { 0x7f010000, 0x7f010001, 0x7f010002 }
+int styleable LEDLightView_AnimationDuration 2
+int styleable LEDLightView_ColorizeGlass 1
+int styleable LEDLightView_LightColor 0
