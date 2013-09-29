@@ -1,6 +1,0 @@
-# incremental data. DO NOT EDIT.
-# format is <lastModified> <length> <SHA-1> <path>
-# Encoding is UTF-8
-1380470577000 612 4025c6143ccb9cf33899d9452e3294249fc4e1d4 /Users/renard/devel/LEDView/build/res/all/debug/values/values.xml
-1380470577000 39843 eecc466f62877c8d57a18c35fa7f565570617ddb /Users/renard/devel/LEDView/build/res/all/debug/drawable/glass_milky.png
-1380470577000 43999 2e035c5406e9249fc86da040f31253e623d39d77 /Users/renard/devel/LEDView/build/res/all/debug/drawable/glass_clear.png
